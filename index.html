@@ -5,22 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Red/Blue Toggle</title>
   <style>
+    /* Make the whole page fill the viewport */
     html, body {
       height: 100%;
       margin: 0;
-      background: red;
+      background-color: red;  /* initial color */
       font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     }
+
+    /* Center the button */
     body {
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
+    /* Button styling */
     button {
-      font-size: 1.1rem;
-      padding: 0.7rem 1rem;
+      font-size: 1.2rem;
+      padding: 0.8rem 1.2rem;
       border-radius: 999px;
-      border: 0;
+      border: none;
       cursor: pointer;
     }
   </style>
@@ -30,11 +35,7 @@
 
   <script>
     const btn = document.getElementById('toggle');
+
     btn.addEventListener('click', () => {
-      const isRed = getComputedStyle(document.documentElement).backgroundColor === 'rgb(255, 0, 0)';
-      document.documentElement.style.backgroundColor = isRed ? 'blue' : 'red';
-      btn.textContent = isRed ? 'Switch to red' : 'Switch to blue';
-    });
-  </script>
-</body>
-</html>
+      // Get the current background color of the whole page
+      const currentColor = getCompu
