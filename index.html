@@ -4,38 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Red/Blue Toggle</title>
-  <style>
-    /* Make the whole page fill the viewport */
-    html, body {
-      height: 100%;
-      margin: 0;
-      background-color: red;  /* initial color */
-      font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    }
-
-    /* Center the button */
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Button styling */
-    button {
-      font-size: 1.2rem;
-      padding: 0.8rem 1.2rem;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
 </head>
-<body>
-  <button id="toggle">Switch to blue</button>
+<body style="margin:0; height:100vh; display:flex; align-items:center; justify-content:center; background:red; font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;">
+  <button style="font-size:1.1rem; padding:0.7rem 1rem; border-radius:999px; border:0; cursor:pointer;">Switch to blue</button>
 
   <script>
-    const btn = document.getElementById('toggle');
-
-    btn.addEventListener('click', () => {
-      // Get the current background color of the whole page
-      const currentColor = getCompu
+    const btn = document.querySelector('button');
+    function toggle() {
+      const isRed = document.body.style.background === 'red';
+      document.body.style.background = isRed ? 'blue' : 'red';
+      btn.textContent = isRed ? 'Switch to red' : 'Switch to blue';
+    }
+    btn.addEventListener('click', toggle);
+  </script>
+</body>
+</html>
