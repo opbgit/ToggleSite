@@ -8,10 +8,13 @@
     html, body {
       height: 100%;
       margin: 0;
-      display: grid;
-      place-items: center;
       background: red;
       font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     button {
       font-size: 1.1rem;
@@ -28,8 +31,8 @@
   <script>
     const btn = document.getElementById('toggle');
     btn.addEventListener('click', () => {
-      const isRed = getComputedStyle(document.body).backgroundColor === 'rgb(255, 0, 0)';
-      document.body.style.backgroundColor = isRed ? 'blue' : 'red';
+      const isRed = getComputedStyle(document.documentElement).backgroundColor === 'rgb(255, 0, 0)';
+      document.documentElement.style.backgroundColor = isRed ? 'blue' : 'red';
       btn.textContent = isRed ? 'Switch to red' : 'Switch to blue';
     });
   </script>
