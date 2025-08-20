@@ -4,18 +4,51 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Red/Blue Toggle</title>
+  <style>
+    /* Fill the whole viewport */
+    html, body { height: 100%; margin: 0; }
+
+    /* Start red; flip to blue by toggling a class on <html> */
+    html { background-color: red; }
+    html.blue { background-color: blue; }
+
+    /* Center the button nicely */
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 0.8rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body style="margin:0; height:100vh; display:flex; align-items:center; justify-content:center; background:red; font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;">
-  <button style="font-size:1.1rem; padding:0.7rem 1rem; border-radius:999px; border:0; cursor:pointer;">Switch to blue</button>
+<body>
+  <button id="toggle">Switch to blue</button>
 
   <script>
-    const btn = document.querySelector('button');
-    function toggle() {
-      const isRed = document.body.style.background === 'red';
-      document.body.style.background = isRed ? 'blue' : 'red';
-      btn.textContent = isRed ? 'Switch to red' : 'Switch to blue';
-    }
-    btn.addEventListener('click', toggle);
+    (function () {
+      var html = document.documentElement;
+      var btn = document.getElementById('toggle');
+
+      function updateLabel() {
+        var isBlue = html.classList.contains('blue');
+        btn.textContent = isBlue ? 'Switch to red' : 'Switch to blue';
+      }
+
+      btn.addEventListener('click', function () {
+        html.classList.toggle('blue');
+        updateLabel();
+      });
+
+      updateLabel(); // set initial button text
+    })();
   </script>
 </body>
 </html>
