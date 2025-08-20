@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Red/Blue Toggle</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: red;
+      font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+    button {
+      font-size: 1.1rem;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      border: 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="toggle">Switch to blue</button>
+
+  <script>
+    const btn = document.getElementById('toggle');
+    btn.addEventListener('click', () => {
+      const isRed = getComputedStyle(document.body).backgroundColor === 'rgb(255, 0, 0)';
+      document.body.style.backgroundColor = isRed ? 'blue' : 'red';
+      btn.textContent = isRed ? 'Switch to red' : 'Switch to blue';
+    });
+  </script>
+</body>
+</html>
